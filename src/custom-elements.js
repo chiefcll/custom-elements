@@ -754,36 +754,6 @@ let Deferred;
     return clone;
   };
 
-  // patch Element.setAttribute & removeAttribute
-
-  const _nativeSetAttribute = Element.prototype.setAttribute;
-  Element.prototype['setAttribute'] = function(name, value) {
-    changeAttribute(this, name, value, _nativeSetAttribute);
-  };
-  const _nativeRemoveAttribute = Element.prototype.removeAttribute;
-  Element.prototype['removeAttribute'] = function(name) {
-    changeAttribute(this, name, null, _nativeRemoveAttribute);
-  };
-
-  function changeAttribute(element, name, value, operation) {
-    name = name.toLowerCase();
-    const oldValue = element.getAttribute(name);
-    operation.call(element, name, value);
-
-    // Bail if this wasn't a fully upgraded custom element
-    if (element[_upgradedProp] == true) {
-      const definition = _customElements()._definitions.get(element.localName);
-      const observedAttributes = definition.observedAttributes;
-      const attributeChangedCallback = definition.attributeChangedCallback;
-      if (attributeChangedCallback && observedAttributes.indexOf(name) >= 0) {
-        const newValue = element.getAttribute(name);
-        if (newValue !== oldValue) {
-          attributeChangedCallback.call(element, name, oldValue, newValue, null);
-        }
-      }
-    }
-  }
-
   Object.defineProperty(window, 'customElements', {
     value: new CustomElementRegistry(),
     configurable: true,
