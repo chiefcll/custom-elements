@@ -759,11 +759,4 @@ let Deferred;
     configurable: true,
     enumerable: true,
   });
-
-  // TODO(justinfagnani): Remove. Temporary for backward-compatibility
-  window['CustomElements'] = {
-    takeRecords() {
-      if (_customElements().flush) _customElements().flush();
-    }
-  }
 })();

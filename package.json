@@ -1,6 +1,6 @@
 {
   "name": "@webcomponents/custom-elements",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.5",
   "description": "HTML Custom Elements Polyfill",
   "main": "custom-elements.min.js",
   "directories": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/webcomponents/custom-elements.git"
+    "url": "https://github.com/chiefcll/custom-elements.git"
   },
   "author": "The Polymer Authors",
   "license": "BSD-3-Clause",
