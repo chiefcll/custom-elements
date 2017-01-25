@@ -777,7 +777,7 @@ let Deferred;
       const attributeChangedCallback = definition.attributeChangedCallback;
       if (attributeChangedCallback && observedAttributes.indexOf(name) >= 0) {
         const newValue = element.getAttribute(name);
-        if (newValue !== oldValue) {
+        if (newValue !== value) {
           attributeChangedCallback.call(element, name, oldValue, newValue, null);
         }
       }
